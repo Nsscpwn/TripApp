@@ -1,0 +1,22 @@
+﻿@model Trip.Models.Details
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <div class="jumbotron">
+        <h3><b>Search City</b></h3>
+        <form action="Search" method="post">
+            <table>
+                <tr>
+                    <td>City Name: </td>
+                    <td><input type="text" name="searchID" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Search" /></td>
+                </tr>
+            </table>
+        </form>
+        @Model.PopUps.City_not_found  <hr />
+    </div>
+</div>
