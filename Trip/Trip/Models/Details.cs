@@ -14,11 +14,14 @@ namespace Trip.Models
             this.Attractions = new Attractions();
             this.CityImages = new CityImages();
             this.PopUps = new PopUps();
+            this.Lists = new Lists();
         }
         public CityImages CityImages { get; set; }
         public Attractions Attractions { get; set; }
         public Country Country { get; set; }
         public Cities Cities { get; set; }
         public PopUps PopUps { get; set; }
+        public Lists Lists { get; set; }
+
     }
 }

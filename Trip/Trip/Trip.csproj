@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Models\Attractions.cs" />
     <Compile Include="Models\CityImages.cs" />
+    <Compile Include="Models\Lists.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Details.cs" />
     <Compile Include="Models\Cities.cs" />
@@ -172,6 +173,9 @@
     <Content Include="Views\Home\City.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
     <Content Include="Views\Home\AdminPage.cshtml" />
+    <Content Include="Views\Home\DeleteCity.cshtml" />
+    <Content Include="Views\Home\DeleteAttractions.cshtml" />
+    <Content Include="Views\Home\Attraction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

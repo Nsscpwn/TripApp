@@ -3,20 +3,12 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <div class="jumbotron">
-        <h3><b>Search City</b></h3>
-        <form action="Search" method="post">
-            <table>
-                <tr>
-                    <td>City Name: </td>
-                    <td><input type="text" name="searchID" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="submit" value="Search" /></td>
-                </tr>
-            </table>
-        </form>
-        @Model.PopUps.City_not_found  <hr />
-    </div>
+<div class="jumbotron" id="formSearch">
+    <h2 id="searchTitle">@Model.PopUps.City_not_found</h2><hr />
+    <form class="form-inline" action="~/Home/City" method="post">
+        <div class="form-group mx-sm-3 mb-2" id="form">
+            <input type="text" class="form-control" id="inputCity" placeholder="Where are u going?" name="searchID">
+        </div>
+        <input type="submit" class="btn btn-primary mb-2" value="Search">
+    </form>
 </div>

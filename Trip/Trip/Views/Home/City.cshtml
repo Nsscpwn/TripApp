@@ -1,4 +1,4 @@
-﻿@model Trip.Models.Details
+﻿@model  Trip.Models.Details
 @{
     ViewBag.Title = Model.Cities.City_Name;
 }
@@ -7,17 +7,30 @@
     <h1 id="CityNameTitle">@Model.Cities.City_Name</h1>
     <img src="~/Content/CityImages/@Model.CityImages.Image_URL" id="imageCity">
 </div>
-<div class="row">
+<div class="row" style="width:100%">
     <div class="col-sm-6" id="title2CityName">@Model.Cities.City_Name</div>
     <div class="col-sm-6" id="title2CountryName">@Model.Country.Country_Name</div>
 </div>
-<h4>Description :@Model.Cities.City_Description</h4>
-<h1>Attractions</h1> <br />
-<h3>Name :@Model.Attractions.Attractions_Name</h3>
-<h4>time Schedule :@Model.Attractions.Attractions_Schedule </h4>
-<h4>Ticket Price :@Model.Attractions.Attractions_TicketPrice</h4>
-<h4>About this attraction :@Model.Attractions.Attraction_Descriptions</h4>
-<h4>ImageURL @Model.CityImages.Image_URL</h4>
+<div id="cityDescriptionDiv"><p id="cityDescription">@Model.Cities.City_Description</p></div>
+<table style="width:100%" class="table">
+    <tr>
+        <th scope="col">Attractions</th>
+        <th scope="col">@Model.Country.Country_Name</th>
+        <th scope="col">Events</th>
+    </tr>
+
+    <tbody>
+        @foreach (var att in Model.Lists.random3Attractions())
+        {
+            <tr>
+
+                <td>
+                    @Html.ActionLink(att.Attractions_Name, "Attraction", "Home", new { id = att.AttractionID });
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 
 
