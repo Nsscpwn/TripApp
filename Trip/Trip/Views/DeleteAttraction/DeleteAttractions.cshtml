@@ -1,0 +1,34 @@
+﻿@model  List<Trip.Models.Attractions>
+@{
+    ViewBag.Title = "DeleteCity";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Attraction Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var attraction in Model)
+        {
+            using (@Html.BeginForm("../DeleteAttraction/DeleteAttractions", "DeleteAttractions", new { id = attraction.AttractionID }))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => attraction.Attractions_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => attraction.Attraction_Descriptions)
+                    </td>
+                    <td>
+                        <input type="submit" value="Delete" />
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

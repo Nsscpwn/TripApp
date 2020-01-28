@@ -1,0 +1,51 @@
+﻿@model  Trip.Models.Details
+@{
+    ViewBag.Title = Model.Cities.City_Name;
+}
+
+<div class="container-fluid" id="divtitleimage">
+    <h1 id="CityNameTitle">@Model.Cities.City_Name</h1>
+    <img src="~/Content/CityImages/@Model.CityImages.Image_URL" id="imageCity">
+</div>
+<div class="row" style="width:100%">
+    <div class="col-sm-6" id="title2CityName">@Model.Cities.City_Name</div>
+    <div class="col-sm-6" id="title2CountryName">@Model.Country.Country_Name</div>
+</div>
+<div id="cityDescriptionDiv"><p id="cityDescription">@Model.Cities.City_Description</p></div>
+
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item">
+        <table style="width:100%" class="table">
+            <tr>
+                <th scope="col">Attractions</th>
+            </tr>
+            <tbody>
+                @foreach (var att in Model.Lists.random3Attractions(Model.Cities.City_Name))
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(att.Attractions_Name, "../Attraction/Attraction", "Attraction", new { id = att.AttractionID });
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </li>
+    <li class="list-group-item">
+        <table style="width:100%" class="table">
+            <tr>
+                <th scope="col">@Model.Country.Country_Name</th>
+            </tr>
+            <tbody>
+                @foreach (var cty in Model.Lists.random3Cities(Model.Cities.City_Name))
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(cty.City_Name, "../Attraction/Attraction", "Attraction", new { id = cty.CityID });
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </li>
+</ul>

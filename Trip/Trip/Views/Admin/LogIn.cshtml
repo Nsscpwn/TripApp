@@ -1,0 +1,23 @@
+﻿@model Trip.Models.LogIn
+@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" id="divlogin">
+    <h2 id="titlulogin"><b>Login</b></h2>
+    <hr/>
+    <form class="form-inline" action="Admin" method="post">
+        <div class="form-group mb-2" id="usernameDiv">
+            <label for="usernameID" class="sr-only">Username</label>
+            <input type="text" class="form-control" id="usernameID" placeholder="Username" name="usernameID">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="passwordID" class="sr-only">Password</label>
+            <input type="password" class="form-control" id="passwordID" placeholder="Password" name="passwordID">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Login</button>
+    </form>
+</div>
+
+

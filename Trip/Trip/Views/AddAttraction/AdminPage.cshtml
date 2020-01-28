@@ -1,0 +1,87 @@
+﻿@model Trip.Models.LogIn
+@{
+    ViewBag.Title = "AdminPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Admin Panel</h1>
+
+<table style="width:100%" class="table">
+    <tr>
+        <th scope="col">Add City</th>
+        <th scope="col">Add Attraction</th>
+    </tr>
+    <tr>
+        <td>
+            <form action="~/AddCity/AddCity" method="post">
+                <table>
+                    <tr>
+                        <td>City Name: </td>
+                        <td><input type="text" name="addCityNameID" /></td>
+                    </tr>
+                    <tr>
+                        <td>CountryID: </td>
+                        <td><input type="text" name="addCountryID" /></td>
+                    </tr>
+                    <tr>
+                        <td>City description: </td>
+                        <td><input type="text" name="addCityDescriptionID" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="Add" /></td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+        <td>
+            <form action="~/AddAttraction/AddAttraction" method="post">
+                <table>
+                    <tr>
+                        <td>Price: </td>
+                        <td><input type="text" name="addAttractionPrice" /></td>
+                    </tr>
+                    <tr>
+                        <td>Program: </td>
+                        <td><input type="text" name="addAttractionProgram" /></td>
+                    </tr>
+                    <tr>
+                        <td>CityID: </td>
+                        <td><input type="text" name="addAttractionCityID" /></td>
+                    </tr>
+                    <tr>
+                        <td>Name: </td>
+                        <td><input type="text" name="addAttractionName" /></td>
+                    </tr>
+                    <tr>
+                        <td>Description: </td>
+                        <td><input type="text" name="addAttractionDescription" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="Add" /></td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <form action="~/ShowCities/ShowCities" method="post">
+            <table>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Cities" /></td>
+                </tr>
+            </table>
+        </form>
+    </tr>
+    <tr>
+        <form action="~/ShowAttraction/ShowAttractions" method="post">
+            <table>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Attractions" /></td>
+                </tr>
+            </table>
+        </form>
+    </tr>
+</table>
+    
+
+

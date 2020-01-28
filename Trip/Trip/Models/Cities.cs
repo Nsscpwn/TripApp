@@ -11,5 +11,6 @@ namespace Trip.Models
         public string City_Name { get; set; }
         public string City_Description { get; set; }
         public string Country_Name { get; internal set; }
+        public int City_Country { get; set; }
     }
 }

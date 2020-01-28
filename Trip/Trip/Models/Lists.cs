@@ -64,9 +64,10 @@ namespace Trip.Models
             rd8.Close();
             return listOfAttractions;
         }
-        public List<Attractions> random3Attractions()
+        public List<Attractions> random3Attractions(string searchID)
         {
             Details det = new Details();
+            det.Cities.City_Name = searchID;
             List<Attractions> listOfRandomAtt = new List<Attractions>();
             SqlConnection con = new SqlConnection
             {
@@ -95,6 +96,52 @@ namespace Trip.Models
             }
             rd9.Close();
             return listOfRandomAtt;
+        }
+        public List<Cities> random3Cities(string searchID)
+        {
+            Details det = new Details();
+            det.Cities.City_Name = searchID;
+            List<Cities> listOfRandomCities = new List<Cities>();
+            SqlConnection con = new SqlConnection
+            {
+                ConnectionString = @"Data Source=DESKTOP-RBTV5AJ\SQLEXPRESS;Initial Catalog=Test;Integrated Security=TrueData Source=DESKTOP-RBTV5AJ\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True"
+            };
+            con.Open();
+            SqlCommand cmd11 = new SqlCommand
+            {
+                CommandText = "SELECT * from Cities inner join Countries on Cities.City_Country=Countries.CountryID",
+                Connection = con
+            };
+            SqlDataReader rd11 = cmd11.ExecuteReader();
+            while (rd11.Read())
+            {
+                if (rd11["City_Name"].ToString() == searchID)
+                {
+                    det.Country.Country_Name = rd11["Country_Name"].ToString();
+                    break;
+                }
+            }
+            rd11.Close();
+            SqlCommand cmd10 = new SqlCommand
+            {
+                CommandText = "SELECT top 3 * from Cities inner join Countries on Cities.City_Country=Countries.CountryID where @Country_Name=Countries.Country_Name ORDER BY NEWID()",
+                Connection = con
+            };
+            cmd10.Parameters.Add(new SqlParameter("@Country_Name", det.Country.Country_Name));
+            SqlDataReader rd10 = cmd10.ExecuteReader();
+            while (rd10.Read())
+            {
+                Cities cty = new Cities();
+                var id = rd10[0].ToString();
+                cty.CityID = Int32.Parse(id);
+                cty.City_Name = rd10[1].ToString();
+                cty.City_Description = rd10[3].ToString();
+                var id2 = rd10[2].ToString();
+                cty.City_Country = Int32.Parse(id2);
+                listOfRandomCities.Add(cty);
+            }
+            rd10.Close();
+            return listOfRandomCities;
         }
     }
 }
