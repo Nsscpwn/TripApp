@@ -70,5 +70,93 @@ namespace Trip.Controllers
                 return View("Index", det);
             }
         }
-    }
+
+        public ActionResult AddCity(string addCityNameID, string addCountryID, string addCityDescriptionID)
+        {
+            Details det = new Details();
+            LogIn log = new LogIn();
+            SqlConnection con = new SqlConnection
+            {
+                ConnectionString = @"Data Source=DESKTOP-RBTV5AJ\SQLEXPRESS;Initial Catalog=Test;Integrated Security=TrueData Source=DESKTOP-RBTV5AJ\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True"
+            };
+            con.Open();
+            SqlCommand cmd4 = new SqlCommand
+            {
+                CommandText = "INSERT INTO Cities  (City_Name, City_Country, City_Description) VALUES (@addCityNameID, @addCountryID, @addCityDescriptionID)",
+                Connection = con
+            };
+            cmd4.Parameters.Add(new SqlParameter("@addCityNameID", addCityNameID));
+            cmd4.Parameters.Add(new SqlParameter("@addCountryId", addCountryID));
+            cmd4.Parameters.Add(new SqlParameter("@addCityDescriptionID", addCityDescriptionID));
+            SqlDataReader rd4 = cmd4.ExecuteReader();
+            while (rd4.Read())
+            {
+
+                cmd4.ExecuteNonQuery();
+            }
+            rd4.Close();
+            return View("AdminPage", log);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCity(int id)
+        {
+            Lists list = new Lists();
+            List<Cities> listOfCities = new List<Cities>();
+            SqlConnection con = new SqlConnection
+            {
+                ConnectionString = @"Data Source=DESKTOP-RBTV5AJ\SQLEXPRESS;Initial Catalog=Test;Integrated Security=TrueData Source=DESKTOP-RBTV5AJ\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True"
+            };
+            con.Open();
+            SqlCommand cmd6 = new SqlCommand
+            {
+                CommandText = "delete from Cities where @id=Cities.CityID",
+                Connection = con
+            };
+            cmd6.Parameters.Add(new SqlParameter("@id", id));
+            SqlDataReader rd6 = cmd6.ExecuteReader();
+            while (rd6.Read())
+            {
+                cmd6.ExecuteNonQuery();
+            }
+            rd6.Close();
+            Details det = new Details();
+            return View("DeleteCity", list.getAllCities());
+
+        }
+
+        [HttpPost]
+        public ActionResult ShowCities()
+        {
+            Lists list = new Lists();
+            return View("DeleteCity", list.getAllCities());
+        }
+
+        [HttpPost]
+        public ActionResult CityList(int id)
+        {
+            Details det = new Details();
+            det.Cities.CityID = id;
+            SqlConnection con = new SqlConnection
+            {
+                ConnectionString = @"Data Source=DESKTOP-RBTV5AJ\SQLEXPRESS;Initial Catalog=Test;Integrated Security=TrueData Source=DESKTOP-RBTV5AJ\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True"
+            };
+            con.Open();
+            SqlCommand cmd12 = new SqlCommand
+            {
+                CommandText = "Select City_Name,Country_Name from Cities inner join Countries on Cities.City_Country=Countries.CountryID where @id=Cities.CityID",
+                Connection = con
+            };
+            cmd12.Parameters.Add(new SqlParameter("@id", id));
+            SqlDataReader rd12 = cmd12.ExecuteReader();
+            while (rd12.Read())
+            {
+                det.Country.Country_Name = rd12["Country_Name"].ToString();
+                det.Cities.City_Name = rd12["City_Name"].ToString();
+
+            }
+            rd12.Close();
+            return View("CityList", det);
+        }
+    }  
 }

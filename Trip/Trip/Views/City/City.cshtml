@@ -1,4 +1,4 @@
-﻿@model  Trip.Models.Details
+﻿@model Trip.Models.Details
 @{
     ViewBag.Title = Model.Cities.City_Name;
 }
@@ -13,39 +13,33 @@
 </div>
 <div id="cityDescriptionDiv"><p id="cityDescription">@Model.Cities.City_Description</p></div>
 
-<ul class="list-group list-group-horizontal">
-    <li class="list-group-item">
-        <table style="width:100%" class="table">
+<table style="width:100%" class="table">
+    <tr>
+        <th scope="col">Attractions</th>
+    </tr>
+    <tbody>
+        @foreach (var att in Model.Lists.random3Attractions(Model.Cities.City_Name))
+        {
             <tr>
-                <th scope="col">Attractions</th>
+                <td>
+                    @Html.ActionLink(att.Attractions_Name, "../AttractionList/AttractionList", "AttractionList", new { idatt = att.Attractions_Name });
+                </td>
             </tr>
-            <tbody>
-                @foreach (var att in Model.Lists.random3Attractions(Model.Cities.City_Name))
-                {
-                    <tr>
-                        <td>
-                            @Html.ActionLink(att.Attractions_Name, "../Attraction/Attraction", "Attraction", new { id = att.AttractionID });
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </li>
-    <li class="list-group-item">
-        <table style="width:100%" class="table">
+        }
+    </tbody>
+</table>
+<table style="width:100%" class="table">
+    <tr>
+        <th scope="col">@Model.Country.Country_Name</th>
+    </tr>
+    <tbody>
+        @foreach (var oras in Model.Lists.random3Cities(Model.Cities.City_Name))
+        {
             <tr>
-                <th scope="col">@Model.Country.Country_Name</th>
+                <td>
+                    @Html.ActionLink(oras.City_Name, "../City/City", "CityList", new { id=oras.CityID });
+                </td>
             </tr>
-            <tbody>
-                @foreach (var cty in Model.Lists.random3Cities(Model.Cities.City_Name))
-                {
-                    <tr>
-                        <td>
-                            @Html.ActionLink(cty.City_Name, "../Attraction/Attraction", "Attraction", new { id = cty.CityID });
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </li>
-</ul>
+        }
+    </tbody>
+</table>

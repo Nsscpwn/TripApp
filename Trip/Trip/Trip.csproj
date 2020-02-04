@@ -120,17 +120,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AddAttractionController.cs" />
-    <Compile Include="Controllers\AddCityController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AttractionController.cs" />
     <Compile Include="Controllers\CityController.cs" />
-    <Compile Include="Controllers\DeleteAttractionController.cs" />
-    <Compile Include="Controllers\DeleteCityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogInController.cs" />
-    <Compile Include="Controllers\ShowAttractionController.cs" />
-    <Compile Include="Controllers\ShowCitiesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,15 +177,14 @@
     <Content Include="Views\LogIn\LogIn.cshtml" />
     <Content Include="Views\City\City.cshtml" />
     <Content Include="Views\City\Index.cshtml" />
-    <Content Include="Views\Attraction\Attraction.cshtml" />
+    <Content Include="Views\Attraction\AttractionList.cshtml" />
     <Content Include="Views\Admin\LogIn.cshtml" />
-    <Content Include="Views\AddAttraction\AdminPage.cshtml" />
-    <Content Include="Views\ShowCities\DeleteCity.cshtml" />
-    <Content Include="Views\ShowAttraction\DeleteAttractions.cshtml" />
+    <Content Include="Views\Attraction\AdminPage.cshtml" />
     <Content Include="Views\Admin\AdminPage.cshtml" />
-    <Content Include="Views\AddCity\AdminPage.cshtml" />
-    <Content Include="Views\DeleteCity\DeleteCity.cshtml" />
-    <Content Include="Views\DeleteAttraction\DeleteAttractions.cshtml" />
+    <Content Include="Views\Attraction\DeleteAttractions.cshtml" />
+    <Content Include="Views\City\AdminPage.cshtml" />
+    <Content Include="Views\City\DeleteCity.cshtml" />
+    <Content Include="Views\City\CityList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

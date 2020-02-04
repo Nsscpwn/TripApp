@@ -141,7 +141,7 @@ namespace Trip.Models
                 listOfRandomCities.Add(cty);
             }
             rd10.Close();
-            return listOfRandomCities;
+            return listOfRandomCities ;
         }
     }
 }
