@@ -14,7 +14,8 @@ namespace Trip.Controllers
         public ActionResult Index()
         {
             Details det = new Details();
-            det.PopUps.City_not_found = "Find your perfect trip!";
+            det.PopUps.City_not_found = "Find your perfect trip:";
+            det.Lists.random3Images();
             return View("Index", det);
         }
     }

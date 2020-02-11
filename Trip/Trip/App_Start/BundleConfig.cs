@@ -24,7 +24,10 @@ namespace Trip
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/CityCSS/City.css"));
+                      "~/Content/CityCSS/City.css",
+                      "~/Content/Index/Index.css",
+                      "~/Content/LogIn/LogIn.css",
+                      "~/Content/AdminPage/AdminPage.css"));
         }
     }
 }

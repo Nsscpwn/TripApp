@@ -140,11 +140,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdminPage\AdminPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CityCSS\City.css" />
+    <Content Include="Content\Index\Index.css" />
+    <Content Include="Content\LogIn\LogIn.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -173,18 +176,19 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\LogIn\LogIn.cshtml" />
     <Content Include="Views\City\City.cshtml" />
-    <Content Include="Views\City\Index.cshtml" />
     <Content Include="Views\Attraction\AttractionList.cshtml" />
-    <Content Include="Views\Admin\LogIn.cshtml" />
-    <Content Include="Views\Attraction\AdminPage.cshtml" />
-    <Content Include="Views\Admin\AdminPage.cshtml" />
     <Content Include="Views\Attraction\DeleteAttractions.cshtml" />
-    <Content Include="Views\City\AdminPage.cshtml" />
     <Content Include="Views\City\DeleteCity.cshtml" />
     <Content Include="Views\City\CityList.cshtml" />
+    <Content Include="Views\Attraction\Attraction.cshtml" />
+    <Content Include="Views\Admin\AdminPage.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\LogIn.cshtml" />
+    <Content Include="Views\City\AdminPage.cshtml" />
+    <Content Include="Views\City\Index.cshtml" />
+    <Content Include="Views\Attraction\AdminPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

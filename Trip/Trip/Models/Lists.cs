@@ -8,7 +8,7 @@ namespace Trip.Models
 {
     public class Lists
     {
-       public List<Cities> getAllCities()
+        public List<Cities> getAllCities()
         {
             List<Cities> listOfCities = new List<Cities>();
             SqlConnection con = new SqlConnection
@@ -31,6 +31,7 @@ namespace Trip.Models
                 city.CityID = Int32.Parse(id);
                 listOfCities.Add(city);
             }
+            con.Close();
             rd5.Close();
             return listOfCities;
         }
@@ -61,6 +62,7 @@ namespace Trip.Models
                 attractions.Attraction_CityID = Int32.Parse(id2);
                 listOfAttractions.Add(attractions);
             }
+            con.Close();
             rd8.Close();
             return listOfAttractions;
         }
@@ -79,7 +81,7 @@ namespace Trip.Models
                 CommandText = "SELECT top 3 * from Attraction inner join Cities on CityID=Attraction.Attraction_City where @city_Name=Cities.City_Name ORDER BY NEWID()",
                 Connection = con
             };
-            cmd9.Parameters.Add(new SqlParameter("@city_Name",det.Cities.City_Name));
+            cmd9.Parameters.Add(new SqlParameter("@city_Name", det.Cities.City_Name));
             SqlDataReader rd9 = cmd9.ExecuteReader();
             while (rd9.Read())
             {
@@ -94,6 +96,7 @@ namespace Trip.Models
                 attractions.Attraction_CityID = Int32.Parse(id2);
                 listOfRandomAtt.Add(attractions);
             }
+            con.Close();
             rd9.Close();
             return listOfRandomAtt;
         }
@@ -140,8 +143,40 @@ namespace Trip.Models
                 cty.City_Country = Int32.Parse(id2);
                 listOfRandomCities.Add(cty);
             }
+            con.Close();
             rd10.Close();
-            return listOfRandomCities ;
+            return listOfRandomCities;
+        }
+
+        public List<CityImages> random3Images()
+        {
+            List<CityImages> listOfRandomCityImages = new List<CityImages>();
+            SqlConnection con = new SqlConnection
+            {
+                ConnectionString = @"Data Source=DESKTOP-RBTV5AJ\SQLEXPRESS;Initial Catalog=Test;Integrated Security=TrueData Source=DESKTOP-RBTV5AJ\SQLEXPRESS;Initial Catalog=Test;Integrated Security=True"
+            };
+            con.Open();
+            SqlCommand cmd11 = new SqlCommand
+            {
+                CommandText = "SELECT top 3 * from Cities inner join ImagesCity on ImagesCity.ImageCity=Cities.CityID",
+                Connection = con
+            };
+            SqlDataReader rd11 = cmd11.ExecuteReader();
+            while (rd11.Read())
+            {
+                CityImages img = new CityImages();
+                var id2 = rd11["ImageCity"].ToString();
+                img.Image_City = Int32.Parse(id2);
+                var id = rd11["ImageID"].ToString();
+                img.Image_ID = Int32.Parse(id);
+                img.Image_URL = rd11["URL"].ToString();
+                img.Image_Name = rd11["ImageName"].ToString();
+                listOfRandomCityImages.Add(img);
+
+            }
+            con.Close();
+            rd11.Close();
+            return listOfRandomCityImages;
         }
     }
 }

@@ -1,0 +1,104 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#mainBody {
+    background-color: ghostwhite !important;
+}
+
+#btnSearch:hover {
+    background-color: white;
+    color: blue;
+}
+
+#SearchTitle {
+    font-size: 20px;
+    font-family: Calibri;
+    color: dodgerblue;
+}
+
+#inputCity {
+    max-width: 100%;
+}
+
+#formSearch {
+    margin-top: 100px;
+}
+
+#actionlink2 {
+    font-size: 15px;
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+#mainactionlink {
+    font-size: 20px;
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+#actionlink2:hover {
+    color: white;
+    background-color: dodgerblue;
+}
+
+#mainactionlink:hover {
+    color: white;
+    background-color: dodgerblue;
+}
+
+#datetime {
+    text-align: center;
+}
+
+.citycarousel {
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    transition:font-size 3s;
+}
+
+    .citycarousel:hover {
+        text-decoration: none;
+        font-size: 40px;
+        color:blue;
+        transition: color 3s,font-size 3s;
+    }
+
+#recommended {
+    font-size: 25px;
+    color: lightgrey;
+}
+
+#rowrecommender{
+    margin-top:100px;
+}
+
+#carouselExampleSlidesOnly{
+    width:70%;
+    margin:auto;
+}
+
+

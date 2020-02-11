@@ -38,6 +38,7 @@ namespace Trip.Controllers
                     break;
                 }
             }
+            con.Close();
             rd3.Close();
             if (Valid_Password == true && Valid_Username == true)
             {

@@ -1,0 +1,18 @@
+﻿.row{
+    margin-bottom:10px;
+}
+
+#adminpaneltitle{
+    color:dodgerblue;
+    font-weight:bold;
+    text-align:center;
+}
+
+#mainContainerAdminPanel{
+    text-align:-webkit-center;
+}
+
+.btn-primary:hover{
+    background-color:white;
+    color:blue;
+}

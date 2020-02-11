@@ -3,43 +3,42 @@
     ViewBag.Title = Model.Cities.City_Name;
 }
 
-<div class="container-fluid" id="divtitleimage">
+<div class="container" id="divtitleimage">
     <h1 id="CityNameTitle">@Model.Cities.City_Name</h1>
-    <img src="~/Content/CityImages/@Model.CityImages.Image_URL" id="imageCity">
+    <img src="~/Content/CityImages/@Model.CityImages.Image_URL" class="img-responsive" id="imageCity">
 </div>
-<div class="row" style="width:100%">
-    <div class="col-sm-6" id="title2CityName">@Model.Cities.City_Name</div>
-    <div class="col-sm-6" id="title2CountryName">@Model.Country.Country_Name</div>
+<div class="container-fluid">
+    <div class="row" style="width:100%">
+        <div class="col-md-12" id="title2CityName">@Model.Cities.City_Name /  @Model.Country.Country_Name</div>
+    </div>
 </div>
 <div id="cityDescriptionDiv"><p id="cityDescription">@Model.Cities.City_Description</p></div>
 
-<table style="width:100%" class="table">
-    <tr>
-        <th scope="col">Attractions</th>
-    </tr>
-    <tbody>
+<div class="container">
+    <div class="col-md-4" id="randomlisttitle">
+        <div class="row">
+            @Model.Cities.City_Name
+            <hr />
+        </div>
         @foreach (var att in Model.Lists.random3Attractions(Model.Cities.City_Name))
         {
-            <tr>
-                <td>
-                    @Html.ActionLink(att.Attractions_Name, "../AttractionList/AttractionList", "AttractionList", new { idatt = att.Attractions_Name });
-                </td>
-            </tr>
+            <div class="row" id="randomlistcitiypage">
+                @Html.ActionLink(att.Attractions_Name, "../Attraction/Attraction", new { idatt = att.AttractionID }, new { @class = "actionlink" })
+            </div>
+            <hr />
         }
-    </tbody>
-</table>
-<table style="width:100%" class="table">
-    <tr>
-        <th scope="col">@Model.Country.Country_Name</th>
-    </tr>
-    <tbody>
+    </div>
+    <div class="col-md-4" id="randomlisttitle">
+        <div class="row">
+            @Model.Country.Country_Name
+            <hr />
+        </div>
         @foreach (var oras in Model.Lists.random3Cities(Model.Cities.City_Name))
         {
-            <tr>
-                <td>
-                    @Html.ActionLink(oras.City_Name, "../City/City", "CityList", new { id=oras.CityID });
-                </td>
-            </tr>
+            <div class="row" id="randomlistcitiypage">
+                @Html.ActionLink(oras.City_Name, "CityList", new { id = oras.CityID } ,new { @class = "actionlink" })
+            </div>
+            <hr />
         }
-    </tbody>
-</table>
+    </div>
+</div>

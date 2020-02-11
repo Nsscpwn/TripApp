@@ -55,11 +55,12 @@ namespace Trip.Controllers
                     break;
                 }
             }
-            det.Lists.random3Attractions(searchID);
-            det.Lists.random3Cities(searchID);
+            con.Close();
             rd2.Close();
             if (Real_City == true)
             {
+                det.Lists.random3Attractions(searchID);
+                det.Lists.random3Cities(searchID);
                 return View("City", det);
 
             }
@@ -94,6 +95,7 @@ namespace Trip.Controllers
 
                 cmd4.ExecuteNonQuery();
             }
+            con.Close();
             rd4.Close();
             return View("AdminPage", log);
         }
@@ -119,6 +121,7 @@ namespace Trip.Controllers
             {
                 cmd6.ExecuteNonQuery();
             }
+            con.Close();
             rd6.Close();
             Details det = new Details();
             return View("DeleteCity", list.getAllCities());
@@ -131,8 +134,6 @@ namespace Trip.Controllers
             Lists list = new Lists();
             return View("DeleteCity", list.getAllCities());
         }
-
-        [HttpPost]
         public ActionResult CityList(int id)
         {
             Details det = new Details();
@@ -144,7 +145,11 @@ namespace Trip.Controllers
             con.Open();
             SqlCommand cmd12 = new SqlCommand
             {
-                CommandText = "Select City_Name,Country_Name from Cities inner join Countries on Cities.City_Country=Countries.CountryID where @id=Cities.CityID",
+                CommandText = "Select * from Cities " +
+                "inner join Countries on Cities.City_Country=Countries.CountryID " +
+                "inner join Attraction on Cities.CityID=Attraction.Attraction_City " +
+                "inner join ImagesCity on Cities.CityID=ImagesCity.ImageCity " +
+                "where @id=Cities.CityID",
                 Connection = con
             };
             cmd12.Parameters.Add(new SqlParameter("@id", id));
@@ -152,11 +157,16 @@ namespace Trip.Controllers
             while (rd12.Read())
             {
                 det.Country.Country_Name = rd12["Country_Name"].ToString();
+                det.Attractions.Attractions_Name = rd12["Attraction_Name"].ToString();
+                det.CityImages.Image_URL = rd12["URL"].ToString();
                 det.Cities.City_Name = rd12["City_Name"].ToString();
-
+                det.Cities.City_Description = rd12["City_Description"].ToString();
             }
+            det.Lists.random3Attractions(det.Cities.City_Name);
+            det.Lists.random3Cities(det.Cities.City_Name);
+            con.Close();
             rd12.Close();
-            return View("CityList", det);
+            return View("City",det);
         }
     }  
 }
